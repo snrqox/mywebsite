@@ -46,30 +46,11 @@
         @keyframes blink {
             50% { opacity: 0; }
         }
-        .error-screen {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: red;
-            color: white;
-            font-size: 2em;
-            text-align: center;
-            padding-top: 20%;
-            animation: flicker 0.2s infinite alternate;
-        }
-        @keyframes flicker {
-            from { opacity: 1; }
-            to { opacity: 0.5; }
-        }
     </style>
 </head>
 <body>
     <h1 class="glitch">Welcome to PapaPlayer</h1>
     <div class="console" id="console"></div>
-    <div class="error-screen" id="errorScreen">404 ERROR - SYSTEM BREACH DETECTED</div>
     <script>
         const consoleElement = document.getElementById("console");
         const messages = [
@@ -77,8 +58,7 @@
             "Loading scripts...", 
             "Bypassing security...", 
             "Access granted!", 
-            "Welcome to the system, User.",
-            "Do you want to know about me? (y/n)"
+            "Welcome to the system, User"
         ];
         let index = 0;
         function typeMessage() {
@@ -95,12 +75,6 @@
                         setTimeout(typeMessage, 1000);
                     }
                 }, 50);
-            } else {
-                document.addEventListener("keydown", function(event) {
-                    if (event.key.toLowerCase() === "y" || event.key.toLowerCase() === "n") {
-                        document.getElementById("errorScreen").style.display = "block";
-                    }
-                });
             }
         }
         setTimeout(typeMessage, 500);
