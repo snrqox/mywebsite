@@ -77,6 +77,7 @@
     <h1 class="glitch">Welcome to PapaPlayer</h1>
     <div class="console" id="console"></div>
     <div class="error-screen" id="errorScreen">404 ERROR - NIGGER DETECTED</div>
+    <audio id="siren" src="https://github.com/snrqox/mywebsite/siren.mp3" preload="auto"></audio>
     <script>
         const consoleElement = document.getElementById("console");
         const messages = [
@@ -106,6 +107,7 @@
                 document.addEventListener("keydown", function(event) {
                     if (event.key.toLowerCase() === "y" || event.key.toLowerCase() === "n") {
                         document.getElementById("errorScreen").style.display = "block";
+                        document.getElementById("siren").play();
                     }
                 });
             }
