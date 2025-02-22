@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PapaPlayer - Hacker Mode</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: "Courier New", Courier, monospace;
+            text-align: center;
+            padding: 50px;
+        }
+        .glitch {
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+            animation: glitch 1s infinite;
+        }
+        @keyframes glitch {
+            0% { transform: skewX(0deg); }
+            20% { transform: skewX(10deg); }
+            40% { transform: skewX(-10deg); }
+            60% { transform: skewX(5deg); }
+            80% { transform: skewX(-5deg); }
+            100% { transform: skewX(0deg); }
+        }
+        .console {
+            border: 2px solid #00ff00;
+            padding: 10px;
+            width: 80%;
+            margin: auto;
+            text-align: left;
+            height: 200px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: #00ff00;
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="glitch">Welcome to PapaPlayer</h1>
+    <div class="console" id="console"></div>
+    <script>
+        const consoleElement = document.getElementById("console");
+        const messages = [
+            "Initializing PapaPlayer...",
+            "Loading scripts...", 
+            "Bypassing security...", 
+            "Access granted!", 
+            "Welcome to the system, Player1."
+        ];
+        let index = 0;
+        function typeMessage() {
+            if (index < messages.length) {
+                let msg = messages[index];
+                let i = 0;
+                let interval = setInterval(() => {
+                    consoleElement.innerHTML += msg[i];
+                    i++;
+                    if (i === msg.length) {
+                        clearInterval(interval);
+                        consoleElement.innerHTML += "<br>";
+                        index++;
+                        setTimeout(typeMessage, 1000);
+                    }
+                }, 50);
+            } else {
+                consoleElement.innerHTML += '<span class="cursor"></span>';
+            }
+        }
+        setTimeout(typeMessage, 500);
+    </script>
+</body>
+</html>
